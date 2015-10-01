@@ -1,5 +1,5 @@
-from UtimcoMVA import UtimcoHandlerMVA
-from Errors import *
+from utimco.UtimcoMVA import UtimcoHandlerMVA
+from utimco.Errors import *
 from sys import argv
 
 
