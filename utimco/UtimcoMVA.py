@@ -18,3 +18,5 @@ class UtimcoHandlerMVA(UtimcoHandler):
         req = self.browser.click(type = "submit", nr = 0)
         return self.browser.open(req)
 
+    def parse(self):
+        pass

@@ -107,7 +107,8 @@ def write_to_excel(data):
     #          ]
 
     variables = [[],[],[],[],[],[],[],[]]
-    col_names = ['Principle Account', 'Component Principle Account', 'Endowment Name', 'Long Term', 'Temp', 'Misc', 'Misc2', 'Misc2']
+    col_names = ['Endowment Name', 'Component Principle Account', 'Principle Account', 'Long Term', 'Temp', 'Misc', 'Misc2', 'Misc2']
+    
     
     for i in data:
         for x, j in enumerate(i):
