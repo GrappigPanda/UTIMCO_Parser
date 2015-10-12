@@ -1,18 +1,28 @@
+import os
+
 from utimco.UtimcoBase import UtimcoLinks
-from UtimcoHandler import lookup_utimco_profile
-from Errors.py import *
+from utimco.UtimcoHandler import lookup_utimco_profile
+from utimco.Errors import *
 from sys import argv
 
+if len(argv) != 4:
+    exit("Usage: \n\n\t python test.py <USER> <PASS> <profile>")
+
+profile = argv[3].lower()
+
 for i in xrange(57350001, 57350436):
-    url = UtimcoLinks(argv[3]).get_link(argv[3])
+    url = UtimcoLinks(profile).get_link(profile)
     
     if not url:
         exit("Failed to retrieve URL") 
         
-    utimco_session = lookup_utimco_profile[argv[3]](argv[1], argv[2], argv[3])
+    utimco_session = lookup_utimco_profile(profile)(argv[1], argv[2], profile)
     resp = utimco_session.login_to_utimco()
     
-    with open("./utimco/{}/{}.html".format(argv[3].lower(), i), 'w') as f:
+    if not os.path.isdir("./data/{}".format(profile)):
+        os.mkdir("./data/{}".format(profile))
+        
+    with open("./data/{}/{}.html".format(profile.lower(), i), 'w') as f:
         utimco_session.open_report(url + str(i))
         
         try:

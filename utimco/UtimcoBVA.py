@@ -1,5 +1,5 @@
 from UtimcoMVA import UtimcoHandlerMVA
-from Errors.py import *
+from Errors import *
 
 class UtimcoHandlerBVA(UtimcoHandlerMVA):
     """

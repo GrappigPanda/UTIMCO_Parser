@@ -10,8 +10,10 @@ class UtimcoHandlerMVA(UtimcoBase):
     """
     
     def profile_view(self, begin, end):
-        if not self.check_for_errors():
-            raise PROFILE_VIEW_ERROR
+        #if not self.check_for_errors():
+        #    raise PROFILE_VIEW_ERROR
+        for f in self.browser.forms():
+            print f
         self.browser.select_form(nr = 0)
         self.browser.form['frmBegPeriod'] = begin
         self.browser.form['frmEndPeriod'] = end

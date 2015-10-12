@@ -4,7 +4,7 @@ from UtimcoBVA import UtimcoHandlerBVA
 
 def lookup_utimco_profile(profile):
     profile = profile.lower()
-    profiles = {"mva":UtimcoHandlerMVA,"bva":UtimcoHandlerBVA}#,"":"","":"","":"","":"","":"","":"","":""}
+    profiles = {"mva":UtimcoHandlerMVA,"bva":UtimcoHandlerBVA}
     
     try:
         profiles[profile]

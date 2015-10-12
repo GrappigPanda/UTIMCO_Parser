@@ -7,6 +7,9 @@ from pandas import DataFrame
 # and find all the reinvestment percentages 
 #
 
+#TODO(ian): Turn into a "Parser" class which the "UtimcoBase" class
+# inherits from so that each class can parse inherently
+
 excel_data = []
 
 def parse_short_name(soup):

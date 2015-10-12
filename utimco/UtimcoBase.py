@@ -46,7 +46,7 @@ class UtimcoBase:
         self.user_agent = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
         #TODO(ian): Ensure cookies properly save.
         self.cookie_jar = mechanize.LWPCookieJar()
-        self.cookie_file = "utimco_cookies.txt"
+        self.cookie_file = "./utimco_cookies.txt"
         
         
         
@@ -65,8 +65,8 @@ class UtimcoBase:
         
     def login_to_utimco(self):
         #TODO(ian): Verify if cookies are still good and load old cookies
-        if os.path.isfile("test"):
-            self.cookie_jar.revert(self.cookie_file)    
+        if os.path.isfile("TESTSET"):
+            self.__load_cookies() 
         else:
             self.browser.open(UtimcoLinks("login").get_link())
             self.browser.select_form(nr = 1)
@@ -75,7 +75,7 @@ class UtimcoBase:
         
             resp = self.browser.submit()
             self.__save_cookies_to_file()
-        return "test"
+        return resp
 
     def open_report(self, report_link):
         self.browser.open(report_link)
@@ -88,9 +88,7 @@ class UtimcoBase:
 
     def check_for_errors(self):
         resp = self.browser.response().read()
-        if " error " in resp: 
-            return False
-        elif " Invalid " in resp:
+        if resp in [" error ", " Invalid "]:
             return False
         else:
             return True
