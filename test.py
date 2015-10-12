@@ -1,20 +1,18 @@
-from utimco.UtimcoMVA import UtimcoHandlerMVA
-from utimco.UtimcoHandler import UtimcoLinks
-from utimco.Errors import *
+from utimco.UtimcoBase import UtimcoLinks
+from UtimcoHandler import lookup_utimco_profile
+from Errors.py import *
 from sys import argv
 
 for i in xrange(57350001, 57350436):
-    utimco_session = UtimcoHandlerMVA(argv[1], argv[2], argv[3])
+    url = UtimcoLinks(argv[3]).get_link(argv[3])
+    
+    if not url:
+        exit("Failed to retrieve URL") 
+        
+    utimco_session = lookup_utimco_profile[argv[3]](argv[1], argv[2], argv[3])
     resp = utimco_session.login_to_utimco()
-   
-    url = UtimcoLinks("MVA").get_link()
     
-    if url:
-        print url
-    else:
-        exit() 
-    
-    with open("./utimco/mva/{}.html".format(i), 'w') as f:
+    with open("./utimco/{}/{}.html".format(argv[3].lower(), i), 'w') as f:
         utimco_session.open_report(url + str(i))
         
         try:

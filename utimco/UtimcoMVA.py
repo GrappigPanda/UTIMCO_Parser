@@ -1,7 +1,7 @@
-from UtimcoHandler import UtimcoHandler
+from UtimcoBase import UtimcoBase
 from Errors import *
 
-class UtimcoHandlerMVA(UtimcoHandler): 
+class UtimcoHandlerMVA(UtimcoBase): 
     """
     A class extension for the MVA profile on Utimco's website.
     
@@ -10,7 +10,7 @@ class UtimcoHandlerMVA(UtimcoHandler):
     """
     
     def profile_view(self, begin, end):
-        if not UtimcoHandler.check_for_errors():
+        if not self.check_for_errors():
             raise PROFILE_VIEW_ERROR
         self.browser.select_form(nr = 0)
         self.browser.form['frmBegPeriod'] = begin
