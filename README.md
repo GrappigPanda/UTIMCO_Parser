@@ -1,4 +1,8 @@
 # UTIMCO_Parser
+
+PLEASE NOTE: This program is no longer maintained, as I no longer have access to UTIMCO.
+I don't imagine anyone will ever use this, but here it is.
+
 A python program designed to download and aggregate data 
 for data analysis from UTIMCO's (The University of Texas 
 Investment Management Company) website.
